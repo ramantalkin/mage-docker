@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y update && apt-get -y install lamp-server^ wget supervisor unzip pwgen mcrypt php5-mcrypt curl php5-curl php5-gd git
-RUN DEBIAN_FRONTEND=noninteractive php5enmod mcrypt
+RUN DEBIAN_FRONTEND=noninteractive php5enmod mcrypt && mkdir /var/www/html
 ADD adminer.php /var/www/html
 ADD my.cnf /etc/mysql/conf.d/my.cnf
 ADD start-apache2.sh /start-apache2.sh

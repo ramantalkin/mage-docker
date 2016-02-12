@@ -13,6 +13,7 @@ RUN rm -rf /var/lib/mysql/*
 EXPOSE 80 443 3306
 RUN cd /var/www/ && git clone https://github.com/OpenMage/magento-mirror && rm html/index.html && mv magento-mirror/* html/ && mv magento-mirror/.* html/ && rm -r magento-mirror
 RUN cd /var/www && chown -R www-data:www-data html 
+ADD restart.sh /restart.sh
 ADD startupscript.sh /startupscript.sh
 RUN chmod 755 /*.sh
 CMD ["/startupscript.sh"]
